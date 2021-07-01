@@ -64,7 +64,6 @@ void lShiftMas(int* source,int n, int size) {
 // Написать функцию сдвига влево на n-элементов с переносом вытесненных элементов в конец
 void lRoundShiftMas(int* source,int n, int size) {
 	int a = 0;
-	cin >> n;
 	for (int j = 0; j < n; j++) {
 		a = source[0];
 		for (int i = 0; i < size; i++) {
@@ -175,8 +174,16 @@ int testlShiftMas() {
 
 // Вариант 7:
 // Написать функцию сдвига влево на n-элементов с переносом вытесненных элементов в конец
-int testlRoundShiftMas() {
-  return -1;
+bool CompareMas(int* a, int* b, int size)
+{
+	for (int i = 0; i < size; i++)
+		if (a[i] != b[i]) return false;
+
+	return true;
+}
+bool testlRoundShiftMas(int* first1, int* first2) {
+	lRoundShiftMas(first1, 3, 5);
+	return CompareMas(first1, first2, 5);
 }
 
 
@@ -211,8 +218,15 @@ void runTest(int (*testFunction)(),const std::string& testName)
 
 
 int main() {
-    const int size = 5;
-    int source[size] = { 1, 2, 3, 4, 5 };
-    lRoundShiftMas(source, 1, size);
+	const int size = 5;
+	int first1[size] = { 1, 2, 3, 4, 5 };
+	int first2[size] = { 4, 5, 1, 2, 3 };
+	int second1[size] = { 5, -4, 3, -2, 1 };
+	int second2[size] = { -2, 1, 5, -4, 3 };
+	int source[size] = { 1,2,3,4,5 };
+	if (testlRoundShiftMas(first1, first2)) cout << "Test ok";
+	else cout << "Test not ok" << endl;
+	if (testlRoundShiftMas(second1, second2)) cout << "Test ok";
+	else cout << "Test not ok";
 }
 
