@@ -63,7 +63,23 @@ void lShiftMas(int* source,int n, int size) {
 // Вариант 7:
 // Написать функцию сдвига влево на n-элементов с переносом вытесненных элементов в конец
 void lRoundShiftMas(int* source,int n, int size) {
-
+	int a = 0;
+	cin >> n;
+	for (int j = 0; j < n; j++) {
+		a = source[0];
+		for (int i = 0; i < size; i++) {
+			if (size == i + 1) {
+				break;
+			}
+			source[i] = source[i + 1];
+		}
+		if (j + 1 > n) break;
+		source[size - 1] = a;
+	}
+	for (int i = 0; i < size; i++)
+	{
+		cout << source[i];
+	}
 }
 
 
@@ -195,11 +211,8 @@ void runTest(int (*testFunction)(),const std::string& testName)
 
 
 int main() {
-   runTest(testInitByZeroMas,"testInitByZeroMas");
-   runTest(testInitMas,"testInitMas");
-   runTest(testCopyMas,"testCopyMas");
-
-   runTest(testCompareMas,"testCompareMas");
-   runTest(testSkoFromMas,"testSkoFromMas");
+    const int size = 5;
+    int source[size] = { 1, 2, 3, 4, 5 };
+    lRoundShiftMas(source, 1, size);
 }
 
