@@ -75,10 +75,6 @@ void lRoundShiftMas(int* source,int n, int size) {
 		if (j + 1 > n) break;
 		source[size - 1] = a;
 	}
-	for (int i = 0; i < size; i++)
-	{
-		cout << source[i];
-	}
 }
 
 
